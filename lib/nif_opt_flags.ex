@@ -10,11 +10,10 @@ defmodule NifOptFlags do
   end
 
   def test do
-    {by, values} = multiply_and_add(
+    multiply_and_add(
       [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
       [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
       [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0]
     )
-    IO.inspect({by, values})
   end
 end

@@ -2,7 +2,7 @@
 
 Example for how to conditionally switch on/off some compilation flags for 3rd party library (or for your own code) when using `cc_precompiler`.
 
-In the following description, we discuss a case when a 3rd party library can be compiled with/without `AVX` feature. But this idea can be generalised to any compilation flags that you want/have to maunally switch on/off based on the target.
+In the following description, we discuss a case when a 3rd party library can be compiled with/without using the `AVX` instruction set. But this idea can be generalised to any compilation flags that you want/have to maunally switch on/off based on the target.
 
 ### Example
 Suppose we have the following `Makefile` (a fragment of it)
@@ -80,3 +80,15 @@ So the last approach (the one shown above) might be the best because
 1. since the library author(s) will explicitly choose which precompiler to use for their library, they would know which environment variable to check and what values to expect.
   
   So we no longer have to worry about the standardize thing because the values will be given by the precompiler (if they want to do this), and it's their job to tell you what values they would set.
+
+### Test
+
+```elixir
+# when running on an x86_64 machine
+iex> NifOptFlags.test
+{:avx256, [0.0, 2.0, 6.0, 12.0, 20.0, 30.0, 42.0, 56.0]}
+
+# non-x86_64 machines
+iex> NifOptFlags.test
+{:for_loop, [0.0, 2.0, 6.0, 12.0, 20.0, 30.0, 42.0, 56.0]}
+```
