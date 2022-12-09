@@ -9,11 +9,11 @@ Suppose we have the following `Makefile` (a fragment of it)
 
 ```makefile
 ...
-3RD_PARTY_FLAGS = -D USE_AVX -march=native -mavx
+3RD_PARTY_FLAGS = -D USE_AVX -march=x86-64 -mavx -mfma
 ...
 ```
 
-There is a `3RD_PARTY_FLAGS` var in it with a default value `-D USE_AVX -march=native -mavx`, which would use the x86_64 AVX instruction set if we leave `3RD_PARTY_FLAGS` as is.
+There is a `3RD_PARTY_FLAGS` var in it with a default value `-D USE_AVX -march=x86-64 -mavx -mfma`, which would use the x86_64 AVX instruction set if we leave `3RD_PARTY_FLAGS` as is.
 
 ```cpp
 #ifdef USE_AVX

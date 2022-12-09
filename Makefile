@@ -18,7 +18,7 @@ endif
 # we can only switch it on or off
 # and that 3rd party library does not support 
 # auto-detecting whether the CPU and/or the compiler supports AVX or not
-3RD_PARTY_FLAGS = -D USE_AVX -march=native -mavx
+3RD_PARTY_FLAGS = -D USE_AVX -march=x86-64 -mavx -mfma
 
 # what we want to achieve here:
 # conditionally turn on that compilation flag if we know we are compiling for an x86_64 target
@@ -58,4 +58,5 @@ build: $(NIF_SO)
 
 $(NIF_SO):
 	@ mkdir -p $(PRIV_DIR)
+	@ echo $(CC_PRECOMPILER_CURRENT_TARGET)
 	$(CC) $(CPPFLAGS) $(3RD_PARTY_FLAGS) $(C_SRC)/nif.cpp  -o $(NIF_SO)
