@@ -18,7 +18,7 @@ endif
 # we can only switch it on or off
 # and that 3rd party library does not support 
 # auto-detecting whether the CPU and/or the compiler supports AVX or not
-3RD_PARTY_FLAGS = -D USE_AVX -mavx
+3RD_PARTY_FLAGS = -D USE_AVX -march=native -mavx
 
 # what we want to achieve here:
 # conditionally turn on that compilation flag if we know we are compiling for an x86_64 target

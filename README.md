@@ -9,17 +9,20 @@ Suppose we have the following `Makefile` (a fragment of it)
 
 ```makefile
 ...
-3RD_PARTY_FLAGS = -D USE_AVX
+3RD_PARTY_FLAGS = -D USE_AVX -march=native -mavx
 ...
 ```
 
-There is a `3RD_PARTY_FLAGS` var in it with a default value `-D USE_AVX -mavx`, which would use the x86_64 AVX instruction set if we leave `3RD_PARTY_FLAGS` as is.
+There is a `3RD_PARTY_FLAGS` var in it with a default value `-D USE_AVX -march=native -mavx`, which would use the x86_64 AVX instruction set if we leave `3RD_PARTY_FLAGS` as is.
 
 ```cpp
 #ifdef USE_AVX
 #include <immintrin.h>
 ERL_NIF_TERM multiply_and_add(ErlNifEnv *env, __m256 a, __m256 b, __m256 c) {
-    __m256 d = _mm256_fmadd_ps(a, b, c);
+    __m256 aa = _mm256_load_ps(a.data());
+    __m256 bb = _mm256_load_ps(b.data());
+    __m256 cc = _mm256_load_ps(c.data());
+    __m256 d = _mm256_fmadd_ps(aa, bb, cc);
     return make_f32x8(env, (float *)&d, "avx256");
 }
 #else
