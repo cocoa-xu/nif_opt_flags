@@ -1,4 +1,4 @@
 %{
-  "cc_precompiler": {:hex, :cc_precompiler, "0.1.0", "03f0fc42f157b02e3cc54d11e56a87830455e43789483dd298a4a3787f876ad1", [:mix], [{:elixir_make, "~> 0.7.0", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm", "3c61c5ff5ecf6f30d90577d25a83ea542bbbfab29d739b9f676a34e3198167f1"},
+  "cc_precompiler": {:hex, :cc_precompiler, "0.1.1", "b1fde16d529428bc2ff53807e4876e06605e14a454af292058a32cf3b4b5a41c", [:mix], [{:elixir_make, "~> 0.7.0", [hex: :elixir_make, repo: "hexpm", optional: false]}], "hexpm", "36b450c7e8cef1db5ca1e4f429d30c57941bccad699137eb52450cc2bdc0ddfe"},
   "elixir_make": {:hex, :elixir_make, "0.7.1", "314f2a5450254db0446ba94cc1ba12a25b83b457f24aa9cc21c128cead5d03aa", [:mix], [{:castore, "~> 0.1", [hex: :castore, repo: "hexpm", optional: true]}], "hexpm", "0f1ad4787b4d7489563351cbf85c9221a852f5441364a2cb3ffd36f2fda7f7fb"},
 }
