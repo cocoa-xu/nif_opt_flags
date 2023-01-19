@@ -52,21 +52,21 @@ And the steps below show how we can do it:
 
 1. let the specific precompiler decide
 
-  ```makefile
-  ifeq (,$(findstring x86_64,$(CC_PRECOMPILER_CURRENT_TARGET)))
+   ```makefile 
+   ifeq (,$(findstring x86_64,$(CC_PRECOMPILER_CURRENT_TARGET)))
     3RD_PARTY_FLAGS =
-  endif
-  ```
+   endif
+   ```
 
-So the last approach (the one shown above) might be the best because 
+   So the last approach (the one shown above) might be the best because 
 
 2. the name of the indicator, `CC_PRECOMPILER_CURRENT_TARGET` here, is uniquely set by the `cc_precompiler` (or any other precompiler). 
 
-  So there will be no clashes unless they intended to do so.
+   So there will be no clashes unless they intended to do so.
 
 3. since the library author(s) will explicitly choose which precompiler to use for their library, they would know which environment variable to check and what values to expect.
   
-  So we no longer have to worry about the standardize thing because the values will be given by the precompiler (if they want to do this), and it's their job to tell you what values they would set.
+   So we no longer have to worry about the standardize thing because the values will be given by the precompiler (if they want to do this), and it's their job to tell you what values they would set.
 
 ### Test
 
